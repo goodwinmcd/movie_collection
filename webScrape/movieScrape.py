@@ -8,7 +8,6 @@
 
 from urllib.request import Request, urlopen
 import urllib
-from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
@@ -185,7 +184,6 @@ def getimdbList(url, date=None):
 # A function that gets all movie titles and dates from any given RT list
 # (like top 100 movies of 2016)
 def getRTList(url):
-  print('entered function')
   movieList = []
   page = urlopen(url)
   soup = BeautifulSoup(page, 'html.parser')
@@ -209,7 +207,6 @@ def getMetaList(url):
   for i, movies in enumerate(titles):
     title = movies.a.contents[0]
     date = dates[i].span.contents[0].split(' ')
-    print(date)
     date = f'({date[len(date)-1]})'
     title = title + " " + date
     movieList.append(title)
